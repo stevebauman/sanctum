@@ -35,10 +35,11 @@ class AuthenticateSession
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @return \Illuminate\Http\Response
      *
      * @throws \Illuminate\Auth\AuthenticationException
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
         if (! $request->hasSession() || ! $request->user()) {
             return $next($request);
