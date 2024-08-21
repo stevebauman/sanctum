@@ -33,12 +33,13 @@ class AuthenticateSession
     /**
      * Handle an incoming request.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      * @return \Illuminate\Http\Response
      *
      * @throws \Illuminate\Auth\AuthenticationException
      */
-    public function handle(Request $request, Closure $next)
+    public function handle($request, $next)
     {
         if (! $request->hasSession() || ! $request->user()) {
             return $next($request);
@@ -93,7 +94,7 @@ class AuthenticateSession
      * @param  string  $guard
      * @return void
      */
-    protected function storePasswordHashInSession($request, string $guard)
+    protected function storePasswordHashInSession($request, $guard)
     {
         $request->session()->put([
             "password_hash_{$guard}" => $this->auth->guard($guard)->user()->getAuthPassword(),
