@@ -9,7 +9,6 @@ use Illuminate\Contracts\Auth\Factory as AuthFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use Symfony\Component\HttpFoundation\Response;
 
 class AuthenticateSession
 {
